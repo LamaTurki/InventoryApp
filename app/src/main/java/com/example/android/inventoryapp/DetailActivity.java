@@ -142,8 +142,7 @@ public class DetailActivity extends AppCompatActivity implements LoaderManager.L
                 }
                 return true;
             case R.id.action_save:
-                saveItem();
-                finish();
+                saveItemAndfinish();
                 return true;
             case android.R.id.home:
                 if (!mDataHasChanged) {
@@ -154,13 +153,12 @@ public class DetailActivity extends AppCompatActivity implements LoaderManager.L
         return super.onOptionsItemSelected(item);
     }
 
-    private void saveItem() {
+    private void saveItemAndfinish() {
         ContentValues values = new ContentValues();
         String name = nameEditText.getText().toString().trim();
         String priceString = priceEditText.getText().toString().trim();
         if (mUri == null && TextUtils.isEmpty(name) && TextUtils.isEmpty(priceString) && quantity == 0 && mBitmap == null)
             return;
-        int price = 0;
         if (TextUtils.isEmpty(name)) {
             Toast.makeText(this, getString(R.string.missing_product_name),
                     Toast.LENGTH_SHORT).show();
@@ -171,7 +169,7 @@ public class DetailActivity extends AppCompatActivity implements LoaderManager.L
                     Toast.LENGTH_SHORT).show();
             return;
         }
-        if (mBitmap == null) {
+        if (mUri == null && mBitmap == null) {
             Toast.makeText(this, R.string.missing_product_image,
                     Toast.LENGTH_SHORT).show();
             return;
@@ -179,6 +177,7 @@ public class DetailActivity extends AppCompatActivity implements LoaderManager.L
         values.put(ProductEntry.COLUMN_NAME, name);
         values.put(ProductEntry.COLUMN_PRICE, Integer.parseInt(priceString));
         values.put(ProductEntry.COLUMN_QUANTITY, quantity);
+        if (mBitmap != null)
         values.put(ProductEntry.COLUMN_IMAGE, DbBitmapUtility.getBytes(mBitmap));
         if (mUri == null) {
             Uri newUri = getContentResolver().insert(ProductEntry.CONTENT_URI, values);
@@ -204,6 +203,7 @@ public class DetailActivity extends AppCompatActivity implements LoaderManager.L
                         Toast.LENGTH_SHORT).show();
             }
         }
+        finish();
     }
 
     private void showUnsavedChangesDialog(
