@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    tools:context="com.example.android.inventoryapp.DetailActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            style="@style/LabelStyle"
+            android:text="@string/product_name" />
+
+        <EditText
+            android:id="@+id/edit_name"
+            style="@style/EditorFieldStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:hint="@string/name_hint"
+            android:inputType="textCapWords"
+            android:paddingLeft="4dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            style="@style/LabelStyle"
+            android:text="@string/product_price" />
+
+        <EditText
+            android:id="@+id/edit_price"
+            style="@style/EditorFieldStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:hint="@string/price_hint"
+            android:inputType="number"
+            android:paddingLeft="4dp" />
+
+        <TextView
+            style="@style/EditorUnitsStyle"
+            android:gravity="center"
+            android:text="@string/price_currency" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            style="@style/LabelStyle"
+            android:text="@string/quantity_label" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:orientation="horizontal"
+            android:paddingLeft="4dp">
+
+            <Button
+                android:id="@+id/decrement_button"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:text="@string/minus_sign" />
+
+            <TextView
+                android:id="@+id/quantity_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp"
+                android:text="@string/initial_quantity_value"
+                android:textColor="@android:color/black"
+                android:textSize="16sp" />
+
+            <Button
+                android:id="@+id/increment_button"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:text="@string/plus_sign" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            style="@style/LabelStyle"
+            android:text="@string/product_image_label" />
+
+        <Button
+            android:id="@+id/select_image_button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:paddingLeft="4dp"
+            android:text="@string/select_image_text" />
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/imageview"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_gravity="center"
+        android:layout_weight="1" />
+</LinearLayout>
