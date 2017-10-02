@@ -29,7 +29,7 @@ public class ProductAdapter extends CursorAdapter {
     }
 
     @Override
-    public void bindView(View view, final Context context, final Cursor cursor) {
+    public void bindView(View view, final Context context, Cursor cursor) {
         TextView nameTV = view.findViewById(R.id.name);
         TextView priceTV = view.findViewById(R.id.price);
         final TextView quantityTV = view.findViewById(R.id.quantity);
@@ -37,6 +37,7 @@ public class ProductAdapter extends CursorAdapter {
         String name = cursor.getString(cursor.getColumnIndex(ProductEntry.COLUMN_NAME));
         int price = cursor.getInt(cursor.getColumnIndex(ProductEntry.COLUMN_PRICE));
         int quantity = cursor.getInt(cursor.getColumnIndex(ProductEntry.COLUMN_QUANTITY));
+        final long id = cursor.getLong(cursor.getColumnIndex(ProductEntry._ID));
         String priceString = Integer.toString((price)) + " $";
         nameTV.setText(name);
         priceTV.setText(priceString);
@@ -52,7 +53,6 @@ public class ProductAdapter extends CursorAdapter {
                     quantity--;
                     ContentValues values = new ContentValues();
                     values.put(ProductEntry.COLUMN_QUANTITY, quantity);
-                    long id = cursor.getLong(cursor.getColumnIndex(ProductEntry._ID));
                     context.getContentResolver().update(ContentUris.withAppendedId(ProductEntry.CONTENT_URI, id), values, null, null);
                 }
             }

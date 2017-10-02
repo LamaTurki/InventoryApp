@@ -35,4 +35,5 @@
     <string name="missing_product_name">Please enter a name</string>
     <string name="missing_product_price">Please enter a price</string>
     <string name="missing_product_image">Please select an image</string>
+    <string name="missing_product_quantity">Please add a quantity</string>
 </resources>

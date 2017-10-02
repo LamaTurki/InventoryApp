@@ -169,6 +169,11 @@ public class DetailActivity extends AppCompatActivity implements LoaderManager.L
                     Toast.LENGTH_SHORT).show();
             return;
         }
+        if (mUri == null && quantity == 0) {
+            Toast.makeText(this, R.string.missing_product_quantity,
+                    Toast.LENGTH_SHORT).show();
+            return;
+        }
         if (mUri == null && mBitmap == null) {
             Toast.makeText(this, R.string.missing_product_image,
                     Toast.LENGTH_SHORT).show();
